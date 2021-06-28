@@ -99,6 +99,7 @@
 ## 2.2 Pull Request
 PR이란 원본 저장소에 대한 수정사항을 보내는 것을 의미.
 PR(Pull Request)는 2.1fork 에서 2.1.2 fored repository 업데이트 까지 마친 후 github사이트에서 Pull Request를 보내면 된다.
+        
         1. fork
         2. $ git clone
         3. $ git remote add
