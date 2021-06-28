@@ -88,12 +88,25 @@
 
 #### 2.1.2 forked repository 업데이트
 + forked repository 내 로컬로 clone
-    
-    $ git clone [link]
++ 수정 후 commit 남기고, Push
+
+        $ git clone [link]
+        $ git add .
+        $ git commit -m "~~"
+        $ git push [remote명] [branch명]
   
 
 ## 2.2 Pull Request
-
+PR이란 원본 저장소에 대한 수정사항을 보내는 것을 의미.
+PR(Pull Request)는 2.1fork 에서 2.1.2 fored repository 업데이트 까지 마친 후 github사이트에서 Pull Request를 보내면 된다.
+        1. fork
+        2. $ git clone
+        3. $ git remote add
+        4. $ git add .
+        5. $ git commit -m
+        6. $ git push
+        7. Pull Request
+        8. 원본저장소 관리자가 변경내용을 확인 후 수락.
 
 
 [참고사이트]
