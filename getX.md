@@ -142,8 +142,10 @@ Get.find() 을 사용하여 increment()을 호출하는 버튼을 만들어 텍�
        child: Text('increment')) 
     )
 
-하지만 이대로 Rebuild 시 Get.find<Controller>() 에서 에러가 발생할 것이다. 이것은 Get.find<Controller>() 가 Controller 를 찾는 시점이 GetBuilder() 의 init 에서 Controller 를 등록하기 이전이라서 그렇다.
+하지만 이대로 Rebuild 시 Get.find<Controller>() 에서 에러가 발생할 것이다.
+  이것은 Get.find<Controller>() 가 Controller 를 찾는 시점이 GetBuilder() 의 init 에서 Controller 를 등록하기 이전이라서 그렇다.
+
  #### 3.2.1.5. Get.put()
- 위의 문제를 해결하기 위해서 Get.put()을 사용
- 우선 build() 내부에 controller 변수를 선언하며, 이때 Get.put()을 통해 Controller 를 등록.
+   위의 문제를 해결하기 위해서 Get.put()을 사용
+   우선 build() 내부에 controller 변수를 선언하며, 이때 Get.put()을 통해 Controller 를 등록.
  
