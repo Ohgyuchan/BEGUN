@@ -101,3 +101,23 @@ Dialog를 화면에 띄어준다. 확인/취소 시에 실행할 함수(**onConf
     )
 
 ## 3.2. 상태관리(StateMagement)
+#### 3.2.1. simple 방식
+reactive방식에 비해 메모리를 적게 사용한다는 장점
+
+#### 3.2.1.1. 변수 선언
+GetController 를 extend하는 Controller 클래스를 선언하고, 초기값을 0으로 설정한 count 변수 선언
+ 
+  class Controller extends GetxController {
+    var count = 0;
+  }
+  
+#### 3.2.1.2. GetBuilder()
+GetBuilder 를 통해 화면에 count 변수를 보여준다. 이때 init 을 설정하지 앟으면 에러가 발생하는 것을 유의
+
+  GetBuilder<Controller>(
+    init: Controller(),
+    builder: (_) => Text('Clicks: ${_.count}'),
+   )
+  )
+
+#### 3.2.1.3.
