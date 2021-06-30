@@ -106,18 +106,44 @@ reactive방식에 비해 메모리를 적게 사용한다는 장점
 
 #### 3.2.1.1. 변수 선언
 GetController 를 extend하는 Controller 클래스를 선언하고, 초기값을 0으로 설정한 count 변수 선언
- 
-  class Controller extends GetxController {
-    var count = 0;
-  }
+  
+    class Controller extends GetxController {
+      var count = 0;
+    }
   
 #### 3.2.1.2. GetBuilder()
 GetBuilder 를 통해 화면에 count 변수를 보여준다. 이때 init 을 설정하지 앟으면 에러가 발생하는 것을 유의
 
-  GetBuilder<Controller>(
-    init: Controller(),
-    builder: (_) => Text('Clicks: ${_.count}'),
-   )
-  )
+    GetBuilder<Controller>(
+      init: Controller(),
+      builder: (_) => Text('Clicks: ${_.count}'),
+    )
 
-#### 3.2.1.3.
+#### 3.2.1.3. update()
+변수의 값이 변할 때 이를 화면에 리는 역할을 하는 함수
+
+    class Controller extends GetxController (
+      var count = 0;
+      void increment() {
+        count++;
+        update();
+      }
+    )
+update()는 ChangeNotifier의 notifyListeners()와 동일한 역할을 수행. 변수의 값이 바뀌는 연산을한 후 update()를 호출하는 함수( increment() ) 를 정의
+
+#### 3.2.1.4. Get.find()
+
+> Get.find(), Get.put() 은 simple, reactive 두 방식 모두에서 사용된다.
+
+Get.find() 을 사용하여 increment()을 호출하는 버튼을 만들어 텍스트 아래에 배치
+
+    TextButton(
+       onPressed: Get.find<Controller>().increment,
+       child: Text('increment')) 
+    )
+
+하지만 이대로 Rebuild 시 Get.find<Controller>() 에서 에러가 발생할 것이다. 이것은 Get.find<Controller>() 가 Controller 를 찾는 시점이 GetBuilder() 의 init 에서 Controller 를 등록하기 이전이라서 그렇다.
+ #### 3.2.1.5. Get.put()
+ 위의 문제를 해결하기 위해서 Get.put()을 사용
+ 우선 build() 내부에 controller 변수를 선언하며, 이때 Get.put()을 통해 Controller 를 등록.
+ 
